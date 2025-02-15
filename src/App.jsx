@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import LoginPage from "./pages/LoginPage";
-import NotFound from "./componemt/navbar/NotFound";
+import NotFound from "./component/navbar/NotFound";
 import VerifyToken from "./pages/VerifyToken";
-import ProtectedRoute from "./componemt/navbar/ProtectedRoute";
+import ProtectedRoute from "./component/navbar/ProtectedRoute";
 
 function App() {
   return (
