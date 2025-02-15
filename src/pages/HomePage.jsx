@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../componemt/navbar/NavBar';
+import Navbar from '../componemt/navbar/navbar';
 import { Container, Row, Col } from "react-bootstrap";
 
 function HomePage() {
