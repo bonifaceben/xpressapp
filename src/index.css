@@ -232,7 +232,6 @@ form {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  
   text-align: center;
   min-width: 50%;
 }
@@ -317,9 +316,12 @@ input:focus {
 /* Media query for smaller screens */
 @media (max-width: 576px) {
   .auth-inner {
-    max-width: 100%; /* Full width on smaller screens */
-    padding: 20px; /* Adjust padding for smaller screens */
+    width: 100vw; /* Full viewport width */
+    max-width: 100%; /* Ensure it doesn't exceed the screen */
+    padding: 20px; /* Adjust padding for better spacing */
   }
+
+
 
   .modal-content{
     max-width: 80%;
