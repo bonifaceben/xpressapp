@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6, label, span {
   background-color: rgb(255, 255, 255);
   padding: 30px;
   border-radius: 8px;
-  min-width: 30%;
+  min-width: 35%;
 }
 
 .navbar-light {
@@ -116,14 +116,13 @@ h1, h2, h3, h4, h5, h6, label, span {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 300px; /* Set the desired width */
-  max-width: 30%; /* Ensures it doesn't get too large on mobile */
+  width: 300px; 
+  max-width: 30%; 
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   display: flex;
   flex-direction: column;
   align-items: center;
- 
 }
 
 .modal-header {
@@ -180,8 +179,6 @@ button:hover {
 }
 
 
-
-
 .verify-token-container {
   max-width: 400px;
   margin: 0 auto;
@@ -235,8 +232,9 @@ form {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 350px;
+  
   text-align: center;
+  min-width: 50%;
 }
 
 .form-group {
@@ -338,8 +336,11 @@ input:focus {
 
 /* Media query for larger screens (desktop view) */
 @media (min-width: 992px) {
-  .auth-inner {
+  .auth-inner { 
     max-width: 800px; /* Increased width for larger screens */
     padding: 50px 70px; /* Adjust padding for a more spacious look */
   }
 }
+
+
+
