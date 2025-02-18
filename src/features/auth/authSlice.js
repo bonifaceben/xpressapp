@@ -39,23 +39,25 @@ export const verifyToken = createAsyncThunk(
   }
 );
 
+const initialState = {
+  formData: {
+    name: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  },
+  token: "",
+  isTokenVerified: localStorage.getItem("isVerified") === "true", // Load from localStorage
+  isRegistered: localStorage.getItem("isRegistered") === "true", // Load from localStorage
+  loading: false,
+  error: null,
+};
+
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    formData: {
-      name: "",
-      username: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-    },
-    token: "",
-    isTokenVerified: false,
-    isRegistered: false,
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     setFormField: (state, action) => {
       const { field, value } = action.payload;
@@ -76,8 +78,11 @@ const authSlice = createSlice({
     resetAuthState: (state) => {
       state.token = "";
       state.isTokenVerified = false;
+      state.isRegistered = false;
       state.loading = false;
       state.error = null;
+      localStorage.removeItem("isRegistered");
+      localStorage.removeItem("isVerified");
     },
   },
   extraReducers: (builder) => {
@@ -89,6 +94,7 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state) => {
         state.loading = false;
         state.isRegistered = true;
+        localStorage.setItem("isRegistered", "true"); // Store in localStorage
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
@@ -98,10 +104,13 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+      
       .addCase(verifyToken.fulfilled, (state) => {
         state.loading = false;
         state.isTokenVerified = true;
-      })
+        localStorage.setItem("isVerified", "true"); // Ensure it is stored
+    })
+
       .addCase(verifyToken.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload.message || "Token verification failed.";

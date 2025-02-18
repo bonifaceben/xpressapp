@@ -15,6 +15,7 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFound />} />
+        
 
         <Route
           path="/verify-token"

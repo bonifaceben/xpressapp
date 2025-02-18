@@ -9,20 +9,17 @@ const VerifyToken = () => {
   const [token, setToken] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, isTokenVerified } = useSelector((state) => state.auth);
+  const { loading, error, isTokenVerified, isRegistered } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const isRegistered = localStorage.getItem("isRegistered") === "true";
-    const isVerified = localStorage.getItem("isVerified") === "true";
+    const storedRegistration = localStorage.getItem("isRegistered") === "true";
 
-    if (!isRegistered) {
+    // If user is not registered, prevent access and send them to register
+    if (!isRegistered && !storedRegistration) {
       toast.error("You must register first.");
       navigate("/register");
-    } else if (isVerified) {
-      toast.info("Token already verified.");
-      navigate("/dashboard");
     }
-  }, [navigate]);
+  }, [navigate, isRegistered]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,9 +40,11 @@ const VerifyToken = () => {
     if (isTokenVerified) {
       toast.success("Token verified successfully!");
       localStorage.setItem("isVerified", "true");
+
       setTimeout(() => {
-        navigate("/dashboard");
-      }, 2000);
+        navigate("/login"); // Redirect to verification page
+      }, 3000);
+
     }
   }, [isTokenVerified, navigate]);
 

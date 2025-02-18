@@ -78,15 +78,15 @@ function Register() {
         "https://billxpressapp.onrender.com/api/v1/auth/register",
         formData
       );
-      console.log("API Response:", response.data);
-
       
       toast.success("Registration successful! Please check your email to verify your account.");
-
-      // Redirect to login after a short delay
+    
+      localStorage.setItem("isRegistered", "true"); // Ensure it's saved
+    
       setTimeout(() => {
-        navigate("/verify-token");
+        navigate("/verify-token"); // Redirect to verification page
       }, 3000);
+      
     } catch (error) {
       console.error("Error details:", error);
       if (error.response && error.response.data) {
